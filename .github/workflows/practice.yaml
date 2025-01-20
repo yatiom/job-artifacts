@@ -1,0 +1,22 @@
+name: Practice test
+on: 
+   pull_request:
+    types:
+        - opened
+jobs:
+    practice:
+        runs-on: ubuntu-22.04
+        outputs:
+            package-file: ${{ steps.package.outputs.package-file }}
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+            - name: Upload artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: Package File
+                path: package.json
+            - name: Name of file
+              id: package
+              run: find package.json -type f -exedir echo 'package-file={}' >> $GITHUB_OUTPUT ';'
+
