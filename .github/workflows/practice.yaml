@@ -1,8 +1,8 @@
 name: Practice test
 on: 
-   pull_request:
-    types:
-        - opened
+   push:
+    branches:
+        - dev
 jobs:
     practice:
         runs-on: ubuntu-22.04
@@ -19,4 +19,7 @@ jobs:
             - name: Name of file
               id: package
               run: find package.json -type f -execdir echo 'package-file={}' >> $GITHUB_OUTPUT ';'
+
+            - name: lel
+              run: echo ${{ steps.package.outputs.package-file }}
 
