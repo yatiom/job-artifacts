@@ -18,5 +18,5 @@ jobs:
                 path: package.json
             - name: Name of file
               id: package
-              run: find package.json -type f -exedir echo 'package-file={}' >> $GITHUB_OUTPUT ';'
+              run: find package.json -type f -execdir echo 'package-file={}' >> $GITHUB_OUTPUT ';'
 
