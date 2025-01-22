@@ -3,8 +3,14 @@ on:
    pull_request:
     types:
         - opened
+   push:
+    branches:
+        - dev
+        - master
+  
 jobs:
     practice:
+        environment: testing
         runs-on: ubuntu-22.04
         outputs:
             package-file: ${{ steps.package.outputs.package-file }}
